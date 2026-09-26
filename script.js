@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             draw() {
                 const isGrimoire = document.body.classList.contains('theme-grimoire');
-                const color = isGrimoire 
+                const color = isGrimoire
                     ? (Math.random() > 0.3 ? '56, 214, 184' : '120, 255, 230')
                     : (Math.random() > 0.3 ? '240, 165, 70' : '220, 90, 30');
 
@@ -424,7 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        
+
         if (progressBar) {
             progressBar.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
         }

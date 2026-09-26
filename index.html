@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A história de Apolo, o jovem gnomo necromante que derrotou o Ortros.">
+    <title>A História de Apolo | O Gnomo Necromante</title>
+
+    <!-- Fontes clássicas de livro e manuscrito -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=MedievalSharp&display=swap"
+        rel="stylesheet">
+
+    <!-- Folha de estilo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="theme-parchment">
+
+    <!-- Canvas de poeira e brasas sutis -->
+    <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+    <!-- Barra de leitura simples e funcional -->
+    <header class="realm-nav-bar" id="top-nav">
+        <div class="nav-container">
+            <div class="tome-brand">
+                <span class="tome-title">A História de Apolo</span>
+            </div>
+
+            <div class="realm-actions">
+                <button class="action-btn" id="theme-btn" title="Mudar modo de leitura">
+                    <span class="icon">📜</span>
+                    <span class="btn-text">Papel</span>
+                </button>
+
+                <div class="action-group font-controls">
+                    <button class="action-btn icon-only" id="font-decrease" title="Diminuir texto"
+                        aria-label="Diminuir texto">A-</button>
+                    <button class="action-btn icon-only" id="font-increase" title="Aumentar texto"
+                        aria-label="Aumentar texto">A+</button>
+                </div>
+
+                <button class="action-btn" id="audio-toggle" title="Ligar/desligar trilha sonora dinâmica">
+                    <span class="icon">🎵</span>
+                    <span class="btn-text" id="audio-label">Música</span>
+                </button>
+
+                <button class="action-btn" id="index-toggle" title="Capítulos">
+                    <span class="icon">🔖</span>
+                    <span class="btn-text">Capítulos</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="scroll-progress-track">
+            <div class="scroll-progress-fill" id="progress-bar"></div>
+        </div>
+    </header>
+
+    <!-- Menu Lateral de Capítulos -->
+    <aside class="chapter-drawer" id="chapter-drawer" aria-label="Índice da História">
+        <div class="drawer-header">
+            <h3>Capítulos</h3>
+            <button class="close-drawer" id="close-drawer" aria-label="Fechar">&times;</button>
+        </div>
+        <ul class="chapter-list">
+            <li><a href="#capitulo-1" class="chapter-link active"><span class="num">I.</span> A Vila e o Tempo dos Homens</a></li>
+            <li><a href="#capitulo-2" class="chapter-link"><span class="num">II.</span> O Fascínio e o Grimório em Branco</a></li>
+            <li><a href="#capitulo-3" class="chapter-link"><span class="num">III.</span> A Partida e a Estratégia de Apolo</a></li>
+            <li><a href="#capitulo-4" class="chapter-link"><span class="num">IV.</span> A Chegada à Cidade e o Ortros</a></li>
+            <li><a href="#capitulo-5" class="chapter-link"><span class="num">V.</span> O Confronto no Cemitério</a></li>
+            <li><a href="#capitulo-6" class="chapter-link"><span class="num">VI.</span> A Vitória de Apolo</a></li>
+        </ul>
+    </aside>
+
+    <!-- Pergaminho Principal -->
+    <main class="scroll-wrapper">
+
+        <!-- Rolo de madeira superior -->
+        <div class="scroll-dowel scroll-dowel-top" aria-hidden="true">
+            <div class="dowel-finial finial-left"></div>
+            <div class="dowel-rod">
+                <div class="dowel-metal-ring ring-1"></div>
+                <div class="dowel-metal-ring ring-2"></div>
+                <div class="dowel-metal-ring ring-3"></div>
+            </div>
+            <div class="dowel-finial finial-right"></div>
+            <div class="parchment-curl curl-top"></div>
+        </div>
+
+        <!-- Folha de Pergaminho -->
+        <article class="parchment-sheet" id="parchment-content">
+
+            <header class="parchment-header">
+                <h1 class="story-main-title">Apolo, o Necromante</h1>
+                <div class="header-line"></div>
+            </header>
+
+            <!-- Capítulo I -->
+            <section class="story-chapter" id="capitulo-1">
+                <div class="chapter-ornament">
+                    <span class="chapter-number">Capítulo I</span>
+                    <h2 class="chapter-title">A Vila e o Tempo dos Homens</h2>
+                </div>
+
+                <div class="chapter-content">
+                    <p class="paragraph-lead">
+                        <span class="drop-cap">A</span>polo nasceu em uma pequena comunidade de gnomos escondida entre
+                        as colinas, longe das grandes cidades e das estradas mais movimentadas. Com apenas 28 anos,
+                        ainda era praticamente um adolescente para um povo que podia viver entre 350 e 500 anos, e
+                        talvez não existisse coisa que o irritasse mais do que ser lembrado disso.
+                    </p>
+
+                    <p>
+                        Desde pequeno escutava que ainda tinha muito tempo pela frente, que poderia aprender certas
+                        coisas quando fosse mais velho e que não precisava ter tanta pressa. Foi justamente por isso que
+                        acabou desenvolvendo uma enorme fascinação pelos humanos. Para ele, era incrível como seres que
+                        viviam tão pouco conseguiam fazer tanta coisa. Alguns mal chegavam aos vinte anos e já haviam
+                        atravessado mares, lutado em guerras, explorado lugares desconhecidos ou começado a construir
+                        histórias que continuariam sendo contadas muito depois de suas mortes.
+                    </p>
+
+                    <!-- Imagem 1 -->
+                    <figure class="parchment-illustration float-right"
+                        data-img-src="assets/images/01-a-vila-dos-gnomos.jpg">
+                        <div class="illustration-frame">
+                            <img src="assets/images/01-a-vila-dos-gnomos.jpg"
+                                alt="Apolo sentado pensativo nos degraus de pedra observando a vila dos gnomos"
+                                loading="lazy">
+                            <button class="expand-img-btn" title="Ampliar imagem">🔍</button>
+                        </div>
+                        <figcaption>
+                            <span class="fig-title">Apolo na vila das colinas</span>
+                            <span class="fig-desc">Pensativo nos degraus de pedra, observando a calma de seu povo
+                                enquanto sonhava com o mundo exterior.</span>
+                        </figcaption>
+                    </figure>
+
+                    <p>
+                        Enquanto isso, Apolo sentia que poderia passar décadas dentro de sua comunidade e todos ainda o
+                        tratariam como um garoto.
+                    </p>
+                </div>
+            </section>
+
+            <div class="scroll-separator">
+                <span class="separator-line"></span>
+                <span class="separator-gem">✦</span>
+                <span class="separator-line"></span>
+            </div>
+
+            <!-- Capítulo II -->
+            <section class="story-chapter" id="capitulo-2">
+                <div class="chapter-ornament">
+                    <span class="chapter-number">Capítulo II</span>
+                    <h2 class="chapter-title">O Fascínio pelos Mortos e o Grimório em Branco</h2>
+                </div>
+
+                <div class="chapter-content">
+                    <p class="paragraph-lead">
+                        <span class="drop-cap">E</span>ssa curiosidade pelos humanos acabou se transformando também em
+                        uma curiosidade pelos mortos. Desde pequeno, Apolo gostava de visitar túmulos antigos, ler nomes
+                        gravados nas pedras e imaginar quem aquelas pessoas haviam sido quando estavam vivas. Enquanto
+                        outras crianças gnomos evitavam cemitérios, ele conseguia passar horas explorando um sem sentir
+                        medo algum. Para ele, cadáveres não eram assustadores, eram apenas pessoas cujas histórias já
+                        haviam terminado.
+                    </p>
+
+                    <p>
+                        Ironicamente, o garoto que não tinha medo algum dos mortos tinha medo de quase todo o resto.
+                        Animais grandes, florestas durante a noite, estranhos armados, monstros ou simplesmente um
+                        barulho que ele não conseguisse identificar já eram motivos suficientes para querer ir embora.
+                        Apolo era curioso demais para ficar longe do perigo, mas medroso demais para querer chegar perto
+                        dele.
+                    </p>
+
+                    <p>
+                        Durante uma dessas visitas escondidas às tumbas, um velho estudioso gnomo percebeu seu
+                        interesse. O homem conhecia espíritos, rituais funerários e principalmente necromancia, e acabou
+                        aceitando Apolo como aprendiz depois de perceber que sua curiosidade pelos mortos vinha muito
+                        mais de fascinação e respeito do que de qualquer desejo por poder.
+                    </p>
+
+                    <!-- Imagem 2 -->
+                    <figure class="parchment-illustration center-wide"
+                        data-img-src="assets/images/02-o-grimorio-em-branco.jpg">
+                        <div class="illustration-frame">
+                            <img src="assets/images/02-o-grimorio-em-branco.jpg"
+                                alt="O mestre gnomo entregando o grimório de páginas vazias para Apolo à luz de velas"
+                                loading="lazy">
+                            <button class="expand-img-btn" title="Ampliar imagem">🔍</button>
+                        </div>
+                        <figcaption>
+                            <span class="fig-title">O grimório de páginas vazias</span>
+                            <span class="fig-desc">O mestre entrega a Apolo o livro onde ele próprio deveria escrever
+                                suas descobertas, feitiços e erros.</span>
+                        </figcaption>
+                    </figure>
+
+                    <p>
+                        Apolo aprendeu rápido, mas queria aprender ainda mais rápido. Assim que conseguiu movimentar
+                        pequenos restos mortais, já queria saber quando poderia levantar um guerreiro inteiro. Quando
+                        finalmente conseguiu controlar seu primeiro esqueleto, perguntou quanto tempo levaria até
+                        conseguir controlar dez. A resposta de seu mestre era quase sempre a mesma: <em>“Quando estiver
+                            preparado.”</em> Ele odiava ouvir aquilo.
+                    </p>
+
+                    <p>
+                        Quanto mais estudava sobre aventureiros, heróis e pessoas que haviam conhecido o mundo, mais
+                        sentia que permanecer naquela comunidade significava aceitar passar décadas sendo tratado como
+                        criança. Até que um dia seu mestre lhe entregou um livro grande e muito bem encadernado. Apolo
+                        imaginou que finalmente receberia algum grimório antigo cheio de feitiços, mas, quando abriu,
+                        descobriu que todas as páginas estavam vazias.
+                    </p>
+
+                    <p>
+                        Seu mestre explicou que aquele seria seu verdadeiro grimório. Os livros daquela biblioteca
+                        guardavam as descobertas e histórias de pessoas que já haviam vivido; aquele, por outro lado,
+                        deveria guardar as de Apolo. Cada criatura que encontrasse, feitiço que aprendesse, pessoa que
+                        conhecesse, erro que cometesse e aventura que sobrevivesse deveria ser registrada ali.
+                    </p>
+                </div>
+            </section>
+
+            <div class="scroll-separator">
+                <span class="separator-line"></span>
+                <span class="separator-gem">✦</span>
+                <span class="separator-line"></span>
+            </div>
+
+            <!-- Capítulo III -->
+            <section class="story-chapter" id="capitulo-3">
+                <div class="chapter-ornament">
+                    <span class="chapter-number">Capítulo III</span>
+                    <h2 class="chapter-title">A Partida e a Estratégia de Apolo</h2>
+                </div>
+
+                <div class="chapter-content">
+                    <p class="paragraph-lead">
+                        <span class="drop-cap">P</span>oucos dias depois, Apolo decidiu partir. Colocou suas coisas numa
+                        mochila, prendeu algumas bolsas de componentes ao cinto, pegou seu cajado e amarrou o grimório
+                        ainda vazio ao corpo.
+                    </p>
+
+                    <!-- Imagem 3 -->
+                    <figure class="parchment-illustration float-left"
+                        data-img-src="assets/images/03-a-grande-partida.jpg">
+                        <div class="illustration-frame">
+                            <img src="assets/images/03-a-grande-partida.jpg"
+                                alt="Apolo partindo pela estrada sob a luz da manhã com cajado e mochila"
+                                loading="lazy">
+                            <button class="expand-img-btn" title="Ampliar imagem">🔍</button>
+                        </div>
+                        <figcaption>
+                            <span class="fig-title">Os primeiros passos na estrada</span>
+                            <span class="fig-desc">Apolo fingindo confiança ao se despedir da vila, hesitando antes de
+                                seguir viagem sozinho.</span>
+                        </figcaption>
+                    </figure>
+
+                    <p>
+                        Saiu de sua comunidade tentando demonstrar toda a confiança que conseguia fingir e, assim que
+                        teve certeza de que ninguém conseguia mais vê-lo, parou no meio da estrada e pensou seriamente
+                        em voltar. Chegou até a dar alguns passos para trás, mas imaginar todos perguntando por que sua
+                        grande aventura havia durado menos de uma hora foi humilhante demais. Então continuou.
+                    </p>
+
+                    <p>
+                        Nos meses seguintes, desenvolveu uma estratégia bastante eficiente para sobreviver como
+                        aventureiro: só aceitava trabalhos que parecessem seguros. Investigar uma tumba, identificar
+                        restos encontrados em ruínas ou descobrir por que espíritos estavam aparecendo em um cemitério
+                        eram trabalhos perfeitos. Escoltar uma caravana por uma estrada infestada de monstros
+                        definitivamente não era.
+                    </p>
+
+                    <p>
+                        Para sua própria surpresa, Apolo começou a descobrir que realmente tinha algum talento.
+                        Problemas envolvendo mortos que aterrorizavam outras pessoas eram justamente aqueles que menos o
+                        assustavam, e pouco a pouco as páginas vazias de seu grimório começaram a receber anotações,
+                        desenhos de criaturas, feitiços simples, nomes de pessoas e relatos de pequenas viagens.
+                    </p>
+                </div>
+            </section>
+
+            <div class="scroll-separator">
+                <span class="separator-line"></span>
+                <span class="separator-gem">✦</span>
+                <span class="separator-line"></span>
+            </div>
+
+            <!-- Capítulo IV -->
+            <section class="story-chapter" id="capitulo-4">
+                <div class="chapter-ornament">
+                    <span class="chapter-number">Capítulo IV</span>
+                    <h2 class="chapter-title">A Chegada à Cidade e o Ortros</h2>
+                </div>
+
+                <div class="chapter-content">
+                    <p class="paragraph-lead">
+                        <span class="drop-cap">F</span>oi durante uma dessas viagens que Apolo chegou a uma pequena
+                        cidade que estava sendo aterrorizada por um Ortros, um enorme cão monstruoso de duas cabeças que
+                        aparecia durante a noite, atacava os animais e fazia viajantes evitarem as estradas próximas.
+                    </p>
+
+                    <p>
+                        Assim que ouviu a história, decidiu que aquilo não tinha absolutamente nada a ver com ele. Seu
+                        plano era comprar comida, passar a noite e partir pela manhã. O problema começou quando alguns
+                        moradores perceberam seu cajado, seu grimório e os amuletos relacionados à morte presos às
+                        roupas. Perguntaram se ele era algum tipo de feiticeiro.
+                    </p>
+
+                    <!-- Imagem 4 -->
+                    <figure class="parchment-illustration center-wide"
+                        data-img-src="assets/images/04-o-chamado-do-necromante.jpg">
+                        <div class="illustration-frame">
+                            <img src="assets/images/04-o-chamado-do-necromante.jpg"
+                                alt="Apolo conversando com os aldeões na taverna ao lado do cartaz do Ortros"
+                                loading="lazy">
+                            <button class="expand-img-btn" title="Ampliar imagem">🔍</button>
+                        </div>
+                        <figcaption>
+                            <span class="fig-title">Na taverna da cidade</span>
+                            <span class="fig-desc">Apolo responde às perguntas dos moradores diante do cartaz com o
+                                desenho do Ortros.</span>
+                        </figcaption>
+                    </figure>
+
+                    <p>
+                        Ele poderia simplesmente ter respondido que era apenas um aprendiz, mas gostou da forma como
+                        aquelas pessoas o olhavam e respondeu apenas:
+                    </p>
+
+                    <div class="quote-callout">
+                        <span class="quote-label">Apolo:</span>
+                        <p class="quote-main">“Necromante.”</p>
+                    </div>
+
+                    <p>
+                        Imediatamente começaram a tratá-lo como alguém muito mais experiente do que realmente era. Pela
+                        primeira vez, ninguém o enxergava como criança. Até que alguém perguntou se ele conseguiria
+                        derrotar o Ortros. Apolo sabia perfeitamente que a resposta era não, mas havia pessoas demais
+                        olhando para ele. Respirou fundo, apoiou uma mão no cajado e respondeu:
+                    </p>
+
+                    <div class="quote-callout highlight">
+                        <span class="quote-label">Com uma frieza nunca antes vista:</span>
+                        <p class="quote-main">"Facilmente."</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="scroll-separator">
+                <span class="separator-line"></span>
+                <span class="separator-gem">✦</span>
+                <span class="separator-line"></span>
+            </div>
+
+            <!-- Capítulo V -->
+            <section class="story-chapter" id="capitulo-5">
+                <div class="chapter-ornament">
+                    <span class="chapter-number">Capítulo V</span>
+                    <h2 class="chapter-title">O Confronto no Cemitério</h2>
+                </div>
+
+                <div class="chapter-content">
+                    <p class="paragraph-lead">
+                        <span class="drop-cap">N</span>aquela mesma noite Apolo já estava planejando uma maneira de
+                        desaparecer da cidade sem ninguém perceber, mas o Ortros apareceu antes que tivesse
+                        oportunidade.
+                    </p>
+
+                    <p>
+                        Quando finalmente viu o tamanho da criatura, toda a confiança que havia demonstrado desapareceu.
+                        As duas cabeças rosnaram, uma delas olhou diretamente para ele e seu primeiro instinto foi fazer
+                        aquilo que sempre fazia quando alguma coisa perigosa demais aparecia: correr.
+                    </p>
+
+                    <p>
+                        O Ortros foi atrás. Durante a perseguição, Apolo acabou chegando a um antigo cemitério nos
+                        arredores da cidade e, desesperado, percebeu que pelo menos ali estava em território conhecido.
+                        Enterrou o cajado no chão e utilizou praticamente tudo que sabia de necromancia para levantar
+                        alguns mortos. Não surgiu nenhum grande exército, apenas alguns esqueletos velhos e incompletos,
+                        mas eram suficientes para seu verdadeiro plano: distrair o monstro enquanto ele fugia. Apolo
+                        apontou dramaticamente para o Ortros, ordenou que os mortos atacassem e imediatamente voltou a
+                        correr.
+                    </p>
+
+                    <!-- Imagem 5 -->
+                    <figure class="parchment-illustration center-wide"
+                        data-img-src="assets/images/05-a-queda-do-ortros.jpg">
+                        <div class="illustration-frame">
+                            <img src="assets/images/05-a-queda-do-ortros.jpg"
+                                alt="O confronto caótico entre o Ortros, os esqueletos invocados e Apolo no cemitério à noite"
+                                loading="lazy">
+                            <button class="expand-img-btn" title="Ampliar imagem">🔍</button>
+                        </div>
+                        <figcaption>
+                            <span class="fig-title">A batalha na sepultura antiga</span>
+                            <span class="fig-desc">O choque entre a fera de duas cabeças e os esqueletos instantes antes
+                                do chão da câmara ceder.</span>
+                        </figcaption>
+                    </figure>
+
+                    <p>
+                        O plano teria terminado ali se algo inesperado não tivesse acontecido. Enquanto destruía os
+                        esqueletos, as duas cabeças do Ortros começaram a disputar os alvos e a criatura avançou
+                        descontroladamente contra uma antiga sepultura. O chão cedeu sob seu peso e o monstro caiu
+                        dentro de uma velha câmara funerária escondida sob o cemitério.
+                    </p>
+
+                    <p>
+                        Apolo parou e percebeu que poderia simplesmente continuar correndo. Ninguém estava ali para
+                        impedi-lo e provavelmente conseguiria desaparecer antes que o Ortros saísse. Mas também sabia
+                        que, se fugisse, a criatura eventualmente voltaria para a cidade.
+                    </p>
+
+                    <p>
+                        Mesmo tremendo de medo, resolveu voltar. Mandou os esqueletos restantes impedirem o Ortros de
+                        subir enquanto derrubava pedras, pedaços de sepulturas e tudo que conseguia encontrar sobre a
+                        abertura. Por alguns segundos, a criatura quase conseguiu escapar e Apolo ficou frente a frente
+                        com uma das cabeças. Queria correr novamente, mas dessa vez permaneceu ali. Levantou o cajado e
+                        usou praticamente toda a magia que ainda possuía para derrubar parte da estrutura sobre o
+                        monstro. Quando a poeira finalmente baixou, não havia mais movimento. O Ortros estava morto.
+                    </p>
+                </div>
+            </section>
+
+            <div class="scroll-separator">
+                <span class="separator-line"></span>
+                <span class="separator-gem">✦</span>
+                <span class="separator-line"></span>
+            </div>
+
+            <!-- Capítulo VI -->
+            <section class="story-chapter" id="capitulo-6">
+                <div class="chapter-ornament">
+                    <span class="chapter-number">Capítulo VI</span>
+                    <h2 class="chapter-title">A vitória de Apolo</h2>
+                </div>
+
+                <div class="chapter-content">
+                    <p class="paragraph-lead">
+                        <span class="drop-cap">À</span> noite, os moradores chegaram seguindo os rastros da criatura e
+                        encontraram uma cena muito diferente daquela que realmente havia acontecido: um pequeno
+                        necromante sozinho diante de uma tumba destruída, vários esqueletos espalhados pelo chão
+                        e, sob os escombros, o corpo de um Ortros.
+                    </p>
+
+                    <!-- Imagem 6 -->
+                    <figure class="parchment-illustration center-wide"
+                        data-img-src="assets/images/06-a-descoberta-na-tumba.jpg">
+                        <div class="illustration-frame">
+                            <img src="assets/images/06-a-descoberta-na-tumba.jpg"
+                                alt="Moradores com lanternas encontram Apolo em pé sobre os escombros e o Ortros soterrado"
+                                loading="lazy">
+                            <button class="expand-img-btn" title="Ampliar imagem">🔍</button>
+                        </div>
+                        <figcaption>
+                            <span class="fig-title">A descoberta pelos moradores</span>
+                            <span class="fig-desc">À luz das lanternas, a cidade encontra Apolo em pé sobre a tumba
+                                desabada e o monstro vencido.</span>
+                        </figcaption>
+                    </figure>
+
+                    <p>
+                        Perguntaram se ele havia feito aquilo. Apolo quase contou a verdade. Quase explicou que havia
+                        passado boa parte do confronto correndo, que o Ortros tinha caído na tumba por acidente e que
+                        inicialmente havia invocado os esqueletos apenas para conseguir fugir. Então percebeu como todos
+                        estavam olhando para ele. Pela primeira vez em sua vida, ninguém o enxergava como aprendiz ou
+                        como uma criança que precisava esperar algumas décadas antes de fazer algo importante. Eles
+                        estavam olhando para ele como um verdadeiro aventureiro. Apolo respirou fundo, tirou a poeira
+                        das roupas e respondeu apenas:
+                    </p>
+
+                    <div class="quote-callout highlight">
+                        <span class="quote-label">A resposta definitiva:</span>
+                        <p class="quote-main">“Sim.”</p>
+                    </div>
+
+                    <p>
+                        A história se espalhou rapidamente e ficou mais absurda cada vez que alguém a contava. Primeiro
+                        diziam que um jovem necromante havia derrotado um Ortros. Depois diziam que ele havia enfrentado
+                        a criatura sozinho. Logo começaram a afirmar que havia levantado guerreiros mortos para formar
+                        um pequeno exército e algumas versões diziam até que ele sequer havia se movido quando o monstro
+                        avançou contra ele.
+                    </p>
+
+                    <!-- Imagem 7 -->
+                    <figure class="parchment-illustration center-wide"
+                        data-img-src="assets/images/07-a-consagracao-do-heroi.jpg">
+                        <div class="illustration-frame">
+                            <img src="assets/images/07-a-consagracao-do-heroi.jpg"
+                                alt="Apolo aclamado pelos moradores com estandartes e aplausos em praça pública"
+                                loading="lazy">
+                            <button class="expand-img-btn" title="Ampliar imagem">🔍</button>
+                        </div>
+                        <figcaption>
+                            <span class="fig-title">A consagração do novo herói</span>
+                            <span class="fig-desc">Apolo aclamado pela multidão, aceitando o papel que a fama construiu
+                                para ele.</span>
+                        </figcaption>
+                    </figure>
+
+                    <p>
+                        Quando percebeu o tamanho que a história havia tomado, já era tarde demais para explicar, então
+                        Apolo resolveu simplesmente abraçar a fama. Passou a andar com uma postura mais confiante, falar
+                        como alguém experiente e esconder o medo sempre que possível. Quando perguntavam como havia
+                        derrotado uma criatura de duas cabeças, ele respondia calmamente:
+                    </p>
+
+                    <blockquote class="simple-quote">
+                        <p class="quote-text">“Duas cabeças significam apenas duas criaturas capazes de temer a morte.”
+                        </p>
+                        <cite>— Apolo (após levar três dias inteiros para pensar nessa frase)</cite>
+                    </blockquote>
+
+                    <p>
+                        Por dentro, porém, Apolo continuava sendo o mesmo garoto medroso que quase voltou para casa no
+                        primeiro dia de viagem. A diferença era que agora, sempre que queria fugir, pensava no que as
+                        pessoas esperavam do famoso necromante que havia derrotado um Ortros. No começo, aquela coragem
+                        era apenas uma atuação para proteger sua reputação, mas pouco a pouco ele começou a perceber que
+                        fingir ser corajoso às vezes fazia com que realmente conseguisse agir apesar do medo.
+                    </p>
+
+                    <p>
+                        O grande e destemido necromante das histórias não existia; era apenas uma versão exagerada dele
+                        criada por rumores e pelas próprias mentiras. Ainda assim, quanto mais Apolo fingia ser aquela
+                        pessoa, mais começava a se tornar parecido com ela.
+                    </p>
+
+                    <p>
+                        E no velho grimório que seu mestre havia lhe entregado, depois de páginas cheias de pequenos
+                        feitiços, desenhos e aventuras insignificantes, apareceu finalmente um relato digno de várias
+                        folhas: a história de como Apolo derrotou um Ortros.
+                    </p>
+
+                    <p class="story-end-note">
+                        Naturalmente, na versão escrita por ele não havia nenhuma menção à parte em que passou boa parte
+                        da luta correndo desesperadamente. <em>Alguns detalhes simplesmente não precisavam entrar para a
+                            história.</em>
+                    </p>
+                </div>
+            </section>
+
+            <footer class="parchment-footer">
+                <div class="footer-mark">❖ ✦ ❖</div>
+                <p class="footer-text">Assim termina o relato registrado no primeiro tomo de Apolo.</p>
+            </footer>
+
+        </article>
+
+        <!-- Rolo de madeira inferior -->
+        <div class="scroll-dowel scroll-dowel-bottom" aria-hidden="true">
+            <div class="parchment-curl curl-bottom"></div>
+            <div class="dowel-finial finial-left"></div>
+            <div class="dowel-rod">
+                <div class="dowel-metal-ring ring-1"></div>
+                <div class="dowel-metal-ring ring-2"></div>
+                <div class="dowel-metal-ring ring-3"></div>
+            </div>
+            <div class="dowel-finial finial-right"></div>
+        </div>
+
+    </main>
+
+    <!-- Modal de zoom nas ilustrações -->
+    <div class="image-modal" id="image-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+        <div class="modal-container">
+            <button class="modal-close" id="modal-close" aria-label="Fechar">&times;</button>
+            <div class="modal-image-wrap">
+                <img id="modal-img" src="" alt="Ilustração ampliada">
+            </div>
+            <div class="modal-caption-wrap">
+                <h4 id="modal-title"></h4>
+                <p id="modal-desc"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script com funções de leitura e áudio -->
+    <script src="script.js"></script>
+</body>
+
+</html>
